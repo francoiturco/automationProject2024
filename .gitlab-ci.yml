@@ -1,0 +1,10 @@
+stages:          # List of stages for jobs, and their order of execution
+  - test
+
+test-job:   # This job also runs in the test stage.
+  stage: test    # It can run at the same time as unit-test-job (in parallel).
+  image: cypress/browsers:node14.19.0-chrome100-ff99-edge
+  script:
+    - npm ci
+    - npm run runOnChrome
+
